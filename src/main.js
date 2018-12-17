@@ -11,6 +11,11 @@ import 'styles/border.css'
 // 处理单页应用的元素点击延迟
 import fastClick from 'fastclick'
 import 'styles/iconfont.css'
+// 导入vue版的swiper插件
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
+// 将swiper插件配置到vue框架中
+Vue.use(VueAwesomeSwiper)
 
 fastClick.attach(document.body)
 
