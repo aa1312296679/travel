@@ -69,7 +69,7 @@ export default {
   computed: {
     pages () {
       // 总页数组
-      // 存放拆分后的每个分页数组
+      // 存放拆分为二维数组后的每个页码数组
       const pages = []
       // 分页内容的内容数
       // 8为每8条数据为一页
@@ -77,13 +77,16 @@ export default {
       // 获取数据源使用分页算法进行分页
       // 将数据源的一维数组拆分为二维数组并存放所有的分页内容
       this.iconList.forEach((item, index) => {
+        // 计算当前元素所对应的页码数组
         const page = Math.floor(index / number)
+        // 如果当前元素所对应的页码数组不存在则创建
         if (!pages[page]) {
           pages[page] = []
         }
+        // 如果当前元素元素所对应的页码数组存在则使用当前元素所对应的页码数组存储当前元素
         pages[page].push(item)
       })
-      // 拆分为分页数组后的二维数组
+      // 拆分完毕的总页二维数组返回到外部
       return pages
     }
   }
@@ -92,6 +95,8 @@ export default {
 <style lang="stylus" scoped>
   @import '~styles/varibles.styl'
   @import '~styles/mixins.styl'
+  .icons
+    margin-top:.1rem
   .icons >>> .swiper-container
     height:0
     padding-bottom:50%

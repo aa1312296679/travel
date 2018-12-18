@@ -16,11 +16,8 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 // 将swiper组件挂载到当前的vue框架中
 Vue.use(VueAwesomeSwiper)
-
 fastClick.attach(document.body)
-
 Vue.config.productionTip = false
-
 new Vue({
   router,
   store,
