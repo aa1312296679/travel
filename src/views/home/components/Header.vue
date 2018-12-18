@@ -7,7 +7,7 @@
       <i class="iconfont">&#xe632;</i>
     </div>
     <div class="header-right">
-      城市
+      {{this.city}}
       <i class="iconfont arrow-icon">&#xe64a;</i>
     </div>
   </div>
@@ -15,7 +15,10 @@
 
 <script>
 export default {
-  name: 'Header'
+  name: 'Header',
+  props: {
+    city: String
+  }
 }
 </script>
 

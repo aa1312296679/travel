@@ -1,6 +1,6 @@
 <template>
 <div class="icons">
-  <swiper>
+  <swiper :options="swiperOption">
     <swiper-slide v-for="(page, index) of pages" :key="index">
       <div class="icon" v-for="item of page"
        :key="item.id">
@@ -17,53 +17,14 @@
 <script>
 export default {
   name: 'HomeIcons',
+  props: {
+    iconList: Array
+  },
   data () {
     return {
-      iconList: [{
-        id: '01',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-        desc: '景点门票'
-      },
-      {
-        id: '02',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/8246f27355943202.png',
-        desc: '滑雪季'
-      },
-      {
-        id: '03',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1804/ff/fdf170ee89594b02.png',
-        desc: '泡温泉'
-      },
-      {
-        id: '04',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1811/f6/e54fad3ea337b02.gif',
-        desc: '动植园'
-      },
-      {
-        id: '05',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png',
-        desc: '动植园'
-      },
-      {
-        id: '06',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/89/55083b0f1951f302.png',
-        desc: '滑雪季'
-      },
-      {
-        id: '07',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/96/c70f1e85ae4a4f02.png',
-        desc: '滑雪季'
-      },
-      {
-        id: '08',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/ab/6f7d6e44963c9302.png',
-        desc: '滑雪季'
-      },
-      {
-        id: '09',
-        imgUrl: 'http://img1.qunarzz.com/piao/fusion/1803/89/55083b0f1951f302.png',
-        desc: '滑雪季'
-      }]
+      swiperOption: {
+        autoplay: false
+      }
     }
   },
   computed: {

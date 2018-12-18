@@ -2,7 +2,7 @@
     <div class="weekend">
       <div class="title">周末去哪儿</div>
       <ul>
-        <li class="item border-bottom" v-for="item of recommendList" :key="item.id">
+        <li class="item border-bottom" v-for="item of List" :key="item.id">
           <div class="item-img-wrapper">
             <img class="item-img" :src="item.imgUrl"/>
           </div>
@@ -18,21 +18,8 @@
 <script>
 export default {
   name: 'weekend',
-  data () {
-    return {
-      recommendList: [{
-        id: '01',
-        imgUrl: 'http://img1.qunarzz.com/sight/source/1505/53/4bcd11cc3a5374.jpg_r_640x214_988a4cee.jpg',
-        title: '芭拉胡景区',
-        desc: '重庆市黔江区319国道附近'
-      },
-      {
-        id: '02',
-        imgUrl: 'http://img1.qunarzz.com/sight/p0/1809/c9/c9ab2722d2990967a3.img.jpg_200x200_b4832539.jpg',
-        title: '芭拉胡景区',
-        desc: '重庆市黔江区319国道附近'
-      }]
-    }
+  props: {
+    List: Array
   }
 }
 </script>
@@ -40,7 +27,6 @@ export default {
 <style lang="stylus" scoped>
   @import '~styles/mixins.styl'
   .title
-    margin-top:.2rem
     line-height:.8rem
     background: #eee
     text-indent: .2rem
@@ -49,7 +35,7 @@ export default {
   .item-img-wrapper
     overflow:hidden
     height:0
-    padding-bottom:33.9%
+    padding-bottom:38%
     .item-img
       width:100%
   .item-info
@@ -60,5 +46,4 @@ export default {
   .item-desc
     line-height:.4rem
     color:#ccc
-
 </style>
