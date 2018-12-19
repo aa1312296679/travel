@@ -6,10 +6,12 @@
     <div class="header-input">
       <i class="iconfont">&#xe632;</i>
     </div>
-    <div class="header-right">
-      {{this.city}}
-      <i class="iconfont arrow-icon">&#xe64a;</i>
-    </div>
+    <router-link to="/city">
+      <div class="header-right">
+        {{this.city}}
+        <i class="iconfont arrow-icon">&#xe64a;</i>
+      </div>
+    </router-link>
   </div>
 </template>
 
@@ -30,8 +32,8 @@ export default {
   // CSS预处理部分通过别名导入预处理模块，必须为别名变量添加~转义
   @import '~styles/varibles.styl'
     .header
-      height: .86rem
-      line-height: .86rem
+      height: $headerHeight
+      line-height: $headerHeight
       display: flex
       background: $bgColor
       color: #fff
@@ -58,6 +60,7 @@ export default {
       width: 1.24rem
       float: right
       text-align: center
+      color: #fff
     .header-right .arrow-icon
       margin-left:-.04rem
       font-size:.24rem
