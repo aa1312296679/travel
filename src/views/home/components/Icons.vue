@@ -59,48 +59,48 @@ export default {
   .icons
     margin-top:.1rem
   .icons >>> .swiper-container
-    height:0
-    padding-bottom:50%
+    height 0
+    padding-bottom 50%
   .icon
     position relative
-    overflow:hidden
-    float:left
+    overflow hidden
+    float left
     /*
       height:0为父元素icon限制子元素icon-img撑开父元素的高度
     */
-    height:0
-    width:25%
-    padding-bottom:25%
+    height 0
+    width 25%
+    padding-bottom 25%
   .icon-img
     position absolute
-    top:0
-    left:0
-    right:0
+    top 0
+    left 0
+    right 0
     /*
       设置定位布局的图片容器的响应式高度
       百分比为设计稿的1:1情况下的高度/Html选择器的font-size
     */
-    bottom:.44rem
+    bottom .44rem
     /*
       将该元素的像素的内外边距添加到该元素的像素中
     */
-    box-sizing:border-box
-    padding:.1rem
+    box-sizing border-box
+    padding .1rem
   .icon-img-content
     /*
       display配合margin将图片元素居中
     */
-    display:block
+    display block
     margin 0 auto
-    height:100%
+    height 100%
   .icon-desc
     position absolute
-    bottom:0
-    left:0
-    right:0
-    height:.44rem
-    line-height:.44rem
-    color:$darkTextColor
+    bottom 0
+    left 0
+    right 0
+    height .44rem
+    line-height .44rem
+    color $darkTextColor
     text-align center
     ellipsis()
 </style>

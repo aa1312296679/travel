@@ -56,12 +56,12 @@ export default {
    >>> .swiper-pagination-bullet-active
     background:white!important
   .wrapper
-    overflow:hidden
-    width: 100%
-    height:0
+    overflow hidden
+    width 100%
+    height 0
     // padding-bootom为该元素的自适应高度
-    padding-bottom:31%
-    background:#eee
+    padding-bottom 31%
+    background #eee
   .swiper-img
-    width:100%
+    width 100%
 </style>

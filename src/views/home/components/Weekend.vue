@@ -27,23 +27,23 @@ export default {
 <style lang="stylus" scoped>
   @import '~styles/mixins.styl'
   .title
-    line-height:.8rem
-    background: #eee
-    text-indent: .2rem
+    line-height .8rem
+    background #eee
+    text-indent .2rem
   .item-title,.item-desc
     ellipsis()
   .item-img-wrapper
-    overflow:hidden
-    height:0
-    padding-bottom:38%
+    overflow hidden
+    height 0
+    padding-bottom 38%
     .item-img
-      width:100%
+      width 100%
   .item-info
-    padding:.1rem
+    padding .1rem
   .item-title
-    line-height:.54rem
-    font-size:.32rem
+    line-height .54rem
+    font-size .32rem
   .item-desc
-    line-height:.4rem
-    color:#ccc
+    line-height .4rem
+    color #ccc
 </style>

@@ -29,32 +29,32 @@ export default {
   /*
     line-height为height.8rem和line-height.8rem的简写
   */
-  line-height:.8rem
-  background: #eee
-  text-indent: .2rem
+  line-height .8rem
+  background #eee
+  text-indent .2rem
 .item-title,.item-desc
   ellipsis()
 .item
-  overflow:hidden
-  display:flex
-  height:1.9rem
+  overflow hidden
+  display flex
+  height 1.9rem
 .item-img
-  width:1.7rem
-  height:1.7rem
-  padding:.1rem
+  width 1.7rem
+  height 1.7rem
+  padding .1rem
 .item-info
-  flex:1
-  padding:.1rem
-  font-size:.32rem
-  min-width:0
+  flex 1
+  padding .1rem
+  font-size .32rem
+  min-width 0
 .item-desc
-  line-height:.4rem
-  color:#ccc
+  line-height .4rem
+  color #ccc
 .item-button
-  margin-top:.16rem
-  background:#ff9300
-  padding:0 .2rem
-  border-radius:.06rem
-  color:#fff
-  line-height:.44rem
+  margin-top .16rem
+  background #ff9300
+  padding 0 .2rem
+  border-radius .06rem
+  color #fff
+  line-height .44rem
 </style>
