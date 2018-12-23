@@ -14,8 +14,10 @@ import 'styles/iconfont.css'
 // 导入vue版的swiper组件
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
-// 将swiper组件挂载到当前的vue框架中
+
+// 将swiper组件包的所有组件全局注册
 Vue.use(VueAwesomeSwiper)
+
 fastClick.attach(document.body)
 Vue.config.productionTip = false
 new Vue({
