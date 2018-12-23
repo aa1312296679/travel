@@ -26,39 +26,13 @@
           -->
           <div class="title border-topbottom">热门城市</div>
           <div class="button-list">
-              <div class="button">北京</div>
+              <div class="button" v-for="(item, index) of hot" :key="index">{{item.name}}</div>
           </div>
         </li>
-        <li class="area">
-          <div class="title border-topbottom">A</div>
-          <ul class="item-list">
-            <li class="item border-bottom">阿拉尔</li>
-            <li class="item border-bottom">阿拉尔</li>
-            <li class="item border-bottom">阿拉尔</li>
-          </ul>
-        </li>
-        <li class="area">
-          <div class="title border-topbottom">A</div>
-          <ul class="item-list">
-            <li class="item border-bottom">阿拉尔</li>
-            <li class="item border-bottom">阿拉尔</li>
-            <li class="item border-bottom">阿拉尔</li>
-          </ul>
-        </li>
-        <li class="area">
-          <div class="title border-topbottom">A</div>
-          <ul class="item-list">
-            <li class="item border-bottom">阿拉尔</li>
-            <li class="item border-bottom">阿拉尔</li>
-            <li class="item border-bottom">阿拉尔</li>
-          </ul>
-        </li>
-        <li class="area">
-          <div class="title border-topbottom">A</div>
-          <ul class="item-list">
-            <li class="item border-bottom">阿拉尔</li>
-            <li class="item border-bottom">阿拉尔</li>
-            <li class="item border-bottom">阿拉尔</li>
+        <li class="area" v-for="(item, key, index) of citites" :key="key+index">
+          <div class="title border-topbottom">{{key}}</div>
+          <ul class="item-list" v-for="item of item" :key="item.id">
+            <li class="item border-bottom">{{item.name}}</li>
           </ul>
         </li>
       </ul>
@@ -69,6 +43,10 @@
 // import Bscroll from 'better-scroll'
 export default {
   name: 'List',
+  props: {
+    hot: Array,
+    citites: Object
+  },
   mounted () {
     // 滑动内容挂在到Bscroll滑动插件中
     this.scroll = new this.$store.state.Bscroll(this.$refs.wrapper)
@@ -112,7 +90,8 @@ export default {
       text-align center
       border .02rem solid #ccc
       border-radius .06rem
-      width 33.3%
+      width 30.2%
+      box-sizing border-box
   .item-list
     .item
       line-height .76rem
