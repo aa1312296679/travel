@@ -29,27 +29,42 @@
               <div class="button" v-for="(item, index) of hot" :key="index">{{item.name}}</div>
           </div>
         </li>
-        <li class="area" v-for="(item, key, index) of citites" :key="key+index">
-          <div class="title border-topbottom">{{key}}</div>
-          <ul class="item-list" v-for="item of item" :key="item.id">
-            <li class="item border-bottom">{{item.name}}</li>
-          </ul>
-        </li>
+          <li class="area" v-for="(item, key, index) of citites" :key="key+index" :ref="key">
+            <div class="title border-topbottom">{{key}}</div>
+              <ul v-for="item of item" class="item-list"  :key="item.id">
+                <li class="item border-bottom">{{item.name}}</li>
+              </ul>
+          </li>
       </ul>
     </div>
 </template>
 
 <script>
-// import Bscroll from 'better-scroll'
 export default {
   name: 'List',
   props: {
+    // 热门城市
     hot: Array,
-    citites: Object
+    // 所有城市
+    citites: Object,
+    // 当前被选中的城市字母
+    letter: String
   },
   mounted () {
     // 滑动内容挂在到Bscroll滑动插件中
-    this.scroll = new this.$store.state.Bscroll(this.$refs.wrapper)
+    // 将滑动对象挂载到当前组件中
+    // 注：scrollY为自定义属性，可任意命名
+    this.scrollY = new this.$store.state.Bscroll(this.$refs.wrapper)
+  },
+  watch: {
+    letter () {
+      if (this.letter) {
+        // 根据当前组件的字母名获取指定名称的字母元素
+        const Element = this.$refs[this.letter][0]
+        // 通过btter-scroll插件的scrollToElement方法查找字母元素的位置并将滚动条滑动至该位置
+        this.scrollY.scrollToElement(Element)
+      }
+    }
   }
 }
 </script>
@@ -90,7 +105,10 @@ export default {
       text-align center
       border .02rem solid #ccc
       border-radius .06rem
-      width 30.2%
+      @media screen and (min-width 375px)
+        width 30.2%
+      @media screen and (max-width 375px)
+        width 29.8%
       box-sizing border-box
   .item-list
     .item

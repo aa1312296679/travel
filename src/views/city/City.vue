@@ -2,8 +2,8 @@
     <div class="city">
       <city-header></city-header>
       <city-search></city-search>
-      <city-list :hot="hotCities" :citites="cities"></city-list>
-      <city-alphabet :citites="cities"></city-alphabet>
+      <city-list :hot="hotCities" :citites="cities" :letter="letter"></city-list>
+      <city-alphabet :cities="cities" @change="handleLetterChange"></city-alphabet>
     </div>
 </template>
 
@@ -25,6 +25,7 @@ export default {
     return {
       cities: {},
       hotCities: [],
+      // 城市页被选中的当前字母
       letter: ''
     }
   },
