@@ -2,7 +2,7 @@
   <!--
     新增wrapper标签解决轮播图加载时的抖动
   -->
-  <div class="wrapper">
+  <div class="swiper-container">
     <!--
       v-if为如果当前swiper组件接收的数组有值则显示swiper组件的视图，否则不显示
       作用：解决swiper加载完毕后默认显示为最后数组的最后一个内容
@@ -31,13 +31,16 @@ export default {
       swiperOption: {
         // 配置轮播页码
         pagination: '.swiper-pagination',
+        // 初始化时自动轮播
+        observer: true,
+        observeParents: true,
         // 循环轮播
         loop: true,
         // autoplay有三个参数
         // 1.false禁用自动轮播
         // 2.true启动用自动轮播时间默认
         // 3.毫秒为单位自定义自动轮播的轮播秒数
-        autoplay: 5000
+        autoplay: 2000
       }
     }
   },
@@ -55,6 +58,8 @@ export default {
   // 当前组件的模板中没有该类名 该类名属于子组件的模板内容，该选择器要获取子组件的模板内容就必须>>>
    >>> .swiper-pagination-bullet-active
     background:white!important
+   >>> .swiper-wrapper
+     height 2.34rem
   .wrapper
     overflow hidden
     width 100%

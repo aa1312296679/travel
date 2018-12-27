@@ -1,6 +1,6 @@
 <template>
 <div class="icons">
-  <swiper :options="swiperOption">
+  <swiper :options="swiperOption" v-if="showSwiper">
     <swiper-slide v-for="(page, index) of pages" :key="index">
       <div class="icon" v-for="item of page"
        :key="item.id">
@@ -23,7 +23,8 @@ export default {
   data () {
     return {
       swiperOption: {
-        autoplay: false
+        autoplay: false,
+        loop: true
       }
     }
   },
@@ -49,6 +50,10 @@ export default {
       })
       // 拆分完毕的总页二维数组返回到外部
       return pages
+    },
+    // 判断当前的swiper组件接收的数组是否有值
+    showSwiper () {
+      return this.iconList.length
     }
   }
 }

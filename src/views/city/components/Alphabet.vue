@@ -15,7 +15,7 @@ export default {
       touchStart: false,
       // 字幕元素A距离当前组件的总容Alphabet元素的高度
       startY: 0,
-      // 执行流的定时器
+      // 屏幕滑动执行流的定时器
       timer: null
     }
   },
@@ -27,7 +27,7 @@ export default {
     this.startY = this.$refs['A'][0].offsetTop
   },
   computed: {
-    // 字母信息
+    // 字母集合
     letters () {
       const letters = []
       for (let i in this.cities) {
