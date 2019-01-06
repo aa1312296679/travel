@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
-import router from './router'
-import store from './store'
+import router from './router/router'
+import store from './store/index'
 // 导入单页应用的公共样式
 // reset样式使单页应用的CSS兼容各种浏览器
 import 'styles/reset.css'
@@ -14,6 +14,12 @@ import 'styles/iconfont.css'
 // 导入vue版的swiper组件
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
+// 导入better-scroll滚动插件
+import Bscroll from 'better-scroll'
+import Axios from 'axios'
+// 将插件挂载到vue类的原型中
+Vue.prototype.$Bscroll = Bscroll
+Vue.prototype.$axios = Axios
 
 // 将swiper组件包的所有组件全局注册
 Vue.use(VueAwesomeSwiper)

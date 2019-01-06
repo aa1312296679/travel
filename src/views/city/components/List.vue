@@ -15,26 +15,21 @@
         <li class="area">
           <div class="title border-topbottom">当前城市</div>
           <div class="button-list">
-              <div class="button">北京</div>
+              <div class="button">{{this.$store.state.city}}</div>
           </div>
         </li>
         <li class="area">
-          <!--
-              为该元素添加上下一像素边框
-              原理：
-              给该元素添加伪元素伪造上下1物理像素的边框
-          -->
           <div class="title border-topbottom">热门城市</div>
           <div class="button-list">
-              <div class="button" v-for="(item, index) of hot" :key="index">{{item.name}}</div>
+              <div class="button" v-for="hotItem of hot" :key="hotItem.id" @click="handleCity(hotItem.name)">{{hotItem.name}}</div>
           </div>
         </li>
-          <li class="area" v-for="(item, key, index) of citites" :key="key+index" :ref="key">
-            <div class="title border-topbottom">{{key}}</div>
-              <ul v-for="item of item" class="item-list"  :key="item.id">
-                <li class="item border-bottom">{{item.name}}</li>
-              </ul>
-          </li>
+        <li class="area" v-for="(items, key) of citites" :key="key" :ref="key">
+          <div class="title border-topbottom">{{key}}</div>
+            <ul v-for="item of items"  class="item-list"  :key="item.id">
+              <li class="item border-bottom">{{item.name}}</li>
+            </ul>
+        </li>
       </ul>
     </div>
 </template>
@@ -54,7 +49,7 @@ export default {
     // 滑动内容挂在到Bscroll滑动插件中
     // 将滑动对象挂载到当前组件中
     // 注：scrollY为自定义属性，可任意命名
-    this.scrollY = new this.$store.state.Bscroll(this.$refs.wrapper)
+    this.scrollY = new this.$Bscroll(this.$refs.wrapper)
   },
   watch: {
     letter () {
@@ -64,6 +59,12 @@ export default {
         // 通过btter-scroll插件的scrollToElement方法查找字母元素的位置并将滚动条滑动至该位置
         this.scrollY.scrollToElement(Element)
       }
+    }
+  },
+  methods: {
+    handleCity (city) {
+      this.$store.dispatch('changeCity', city)
+      this.$router.push('/')
     }
   }
 }

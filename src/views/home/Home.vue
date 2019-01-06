@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <home-header :city="city"></home-header>
+    <home-header></home-header>
     <home-swiper :swiperList="swiperList"></home-swiper>
     <home-icons :iconList="iconList"></home-icons>
     <HomeRecommend :recommendList="recommendList"></HomeRecommend>
@@ -15,14 +15,11 @@ import HomeSwiper from './components/Swiper'
 import HomeIcons from './components/Icons'
 import HomeRecommend from './components/Recommend'
 import HomeWeekend from './components/Weekend'
-// 导入首页的axios组件
-import Axios from 'axios'
 
 export default {
   name: 'home',
   data () {
     return {
-      city: '',
       swiperList: [],
       iconList: [],
       recommendList: [],
@@ -42,7 +39,7 @@ export default {
   methods: {
     // 请求当前页的数据源
     getHomeInfo () {
-      Axios.get('/api/index.json')
+      this.$axios.get('/api/index.json')
         .then(this.getHomeInfoSucc)
         .catch(err => {
           console.log(err)
@@ -59,7 +56,6 @@ export default {
       // 如果请求成功
       if (res.ret && res.data) {
         const data = res.data
-        this.city = data.city
         this.swiperList = data.swiperList
         this.iconList = data.iconList
         this.recommendList = data.recommendList

@@ -1,14 +1,13 @@
 <template>
     <div class="city">
       <city-header></city-header>
-      <city-search></city-search>
+      <city-search :cities="cities"></city-search>
       <city-list :hot="hotCities" :citites="cities" :letter="letter"></city-list>
       <city-alphabet :cities="cities" @change="handleLetterChange"></city-alphabet>
     </div>
 </template>
 
 <script>
-import axios from 'axios'
 import CityHeader from './components/Header'
 import CitySearch from './components/search'
 import CityList from './components/List'
@@ -31,7 +30,7 @@ export default {
   },
   methods: {
     getCityInfo () {
-      axios.get('/api/city.json')
+      this.$axios.get('/api/city.json')
         .then(this.handleGetCityInfoSucc)
     },
     handleGetCityInfoSucc (res) {

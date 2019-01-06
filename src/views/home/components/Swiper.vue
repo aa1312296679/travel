@@ -23,6 +23,7 @@ export default {
   // 自定义的swiper处的组件名不能与swiper组件同名为swiper
   name: 'HomeSwiper',
   props: {
+    // 所有轮播图的图片地址
     swiperList: Array
   },
   data () {
@@ -31,7 +32,7 @@ export default {
       swiperOption: {
         // 配置轮播页码
         pagination: '.swiper-pagination',
-        // 初始化时自动轮播
+        // observer和observeParents用于初始化时自动轮播
         observer: true,
         observeParents: true,
         // 循环轮播
