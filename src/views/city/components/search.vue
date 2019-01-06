@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: 'citySearch',
   props: {
@@ -76,10 +77,10 @@ export default {
     handleCity (city) {
       // 清空查询内容
       this.keyword = ''
-      // 将选中的查询结果添加至vuex
-      this.$store.dispatch('changeCity', city)
+      this.changeCity(city)
       this.$router.push('/')
-    }
+    },
+    ...mapActions(['changeCity'])
   }
 }
 </script>

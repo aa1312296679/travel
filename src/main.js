@@ -20,7 +20,6 @@ import Axios from 'axios'
 // 将插件挂载到vue类的原型中
 Vue.prototype.$Bscroll = Bscroll
 Vue.prototype.$axios = Axios
-
 // 将swiper组件包的所有组件全局注册
 Vue.use(VueAwesomeSwiper)
 

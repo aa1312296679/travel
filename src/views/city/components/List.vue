@@ -15,7 +15,7 @@
         <li class="area">
           <div class="title border-topbottom">当前城市</div>
           <div class="button-list">
-              <div class="button">{{this.$store.state.city}}</div>
+              <div class="button">{{this.city}}</div>
           </div>
         </li>
         <li class="area">
@@ -27,7 +27,7 @@
         <li class="area" v-for="(items, key) of citites" :key="key" :ref="key">
           <div class="title border-topbottom">{{key}}</div>
             <ul v-for="item of items"  class="item-list"  :key="item.id">
-              <li class="item border-bottom">{{item.name}}</li>
+              <li class="item border-bottom" @click="handleCity(item.name)">{{item.name}}</li>
             </ul>
         </li>
       </ul>
@@ -35,8 +35,12 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 export default {
   name: 'List',
+  computed: {
+    ...mapState(['city'])
+  },
   props: {
     // 热门城市
     hot: Array,
@@ -63,9 +67,10 @@ export default {
   },
   methods: {
     handleCity (city) {
-      this.$store.dispatch('changeCity', city)
+      this.changeCity(city)
       this.$router.push('/')
-    }
+    },
+    ...mapActions(['changeCity'])
   }
 }
 </script>
