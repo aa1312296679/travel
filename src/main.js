@@ -17,6 +17,7 @@ import 'swiper/dist/css/swiper.css'
 // 导入better-scroll滚动插件
 import Bscroll from 'better-scroll'
 import Axios from 'axios'
+
 // 将插件挂载到vue类的原型中
 Vue.prototype.$Bscroll = Bscroll
 Vue.prototype.$axios = Axios
@@ -25,6 +26,7 @@ Vue.use(VueAwesomeSwiper)
 
 fastClick.attach(document.body)
 Vue.config.productionTip = false
+
 new Vue({
   router,
   store,

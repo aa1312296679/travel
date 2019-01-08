@@ -20,7 +20,6 @@ export default {
   name: 'home',
   data () {
     return {
-      lastCity: '',
       swiperList: [],
       iconList: [],
       recommendList: [],
@@ -28,6 +27,7 @@ export default {
     }
   },
   computed: {
+    // 将vuex的当前城市映射到当前组件，以此作为ajax的请求参数
     ...mapState(['city'])
   },
   components: {
@@ -40,22 +40,29 @@ export default {
   // 当前组件被渲染的内容不是从keep-alive的缓存获取时才触发
   // 如果当前组件被渲染的内容从keep-alive的缓存获取则不触发
   mounted () {
-    // 通过vuex的city记录当前的渲染信息
+    // 将请求参数记录在组件本地
     this.lastCity = this.city
     this.getHomeInfo()
   },
+  // 该组件被使用时激活
   // 不管组件的渲染内容是否从缓存获取，只要组件被渲染完成就立即触发
   activated () {
-    // 如果vuex的city记录已发送变化则重新发送ajax请求进行渲染
+    // 如果本地记录的vuex信息与vuex中的当前信息不匹配
     if (this.lastCity !== this.city) {
-      // 记录渲染信息
+      // 更新组件本的请求参数
       this.lastCity = this.city
+      // 重新请求新数据
       this.getHomeInfo()
     }
+  },
+  // 该组件被停用时激活
+  deactivated () {
+    console.log('ww')
   },
   methods: {
     // 请求当前页的数据源
     getHomeInfo () {
+      // 通过vuex的当前城市请求指定的城市信息
       this.$axios.get('/api/index.json?city=' + this.city)
         .then(this.getHomeInfoSucc)
         .catch(err => {
