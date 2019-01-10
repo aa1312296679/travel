@@ -47,8 +47,6 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  .container >>> .swiper-container
-    overflow: inherit
   .container
     display: flex
     flex-direction: column
@@ -66,10 +64,8 @@ export default {
       padding-bottom: 100%
       .gallary-img
         width: 100%
-        height 5.12rem
       .swiper-pagination
         color: #fff
-        bottom: -1rem
-    .swiper-pagination-fraction
-      top 5.12rem
+        bottom -1rem
+        top 5.12rem
 </style>

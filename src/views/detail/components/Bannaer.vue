@@ -19,6 +19,7 @@ export default {
   name: 'Bannaer',
   data () {
     return {
+      // 公用局部组件的显示状态
       showGallary: false
     }
   },
@@ -30,9 +31,11 @@ export default {
   },
   methods: {
     handleBanerClick () {
+      // 显示公用组件中的景区图组件
       this.showGallary = true
     },
     handleGallaryClose () {
+      // 隐藏公用组件中的景区图组件
       this.showGallary = false
     }
   }

@@ -37,10 +37,10 @@ export default {
     HomeRecommend,
     HomeWeekend
   },
-  // 当前组件被渲染的内容不是从keep-alive的缓存获取时才触发
-  // 如果当前组件被渲染的内容从keep-alive的缓存获取则不触发
+  // 当前组件的组件内容被渲染完成时触发
+  // 只有组件不是从keep-alive获取并渲染输出时才触发，如果组件的渲染输出是从keep-alive获取则不会触发
   mounted () {
-    // 将请求参数记录在组件本地
+    // 将请求参数记录在当前组件
     this.lastCity = this.city
     this.getHomeInfo()
   },
@@ -49,7 +49,7 @@ export default {
   activated () {
     // 如果本地记录的vuex信息与vuex中的当前信息不匹配
     if (this.lastCity !== this.city) {
-      // 更新组件本的请求参数
+      // 更新当前组件的请求参数的记录信息
       this.lastCity = this.city
       // 重新请求新数据
       this.getHomeInfo()
@@ -57,7 +57,7 @@ export default {
   },
   // 该组件被停用时激活
   deactivated () {
-    console.log('ww')
+    console.log('Home组件已停用')
   },
   methods: {
     // 请求当前页的数据源

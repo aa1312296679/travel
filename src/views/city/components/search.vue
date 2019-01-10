@@ -24,16 +24,16 @@ export default {
   },
   data () {
     return {
-      // 查询内容
+      // 查询输入框的双向绑定内容
       keyword: '',
-      // 查询内容的提示信息
+      // 查询输入框的的提示信息
       list: [],
       // 查询内容的提示频率
       timer: null
     }
   },
   watch: {
-    // 监听查询内容
+    // 监听查询输入框的查询内容
     // 作用：实现查询输入框的查询提示信息实时更新
     keyword () {
       // 如果查询关键词监听的执行频率定时器存在则清楚
@@ -45,22 +45,20 @@ export default {
         this.list = []
         return
       }
-      // 查询输入框的所有查询提示信息
-      const result = []
+      // 清空查询输入框的所有查询提示信息
+      this.list = []
       // 如果查询内容关键词不为空则100毫秒后搜索与查询关键词相匹配的信息
       this.timer = setTimeout(() => {
-        // 遍历所有的查询内容
+        // 遍历所有的城市信息并找出与查询输入框相匹配的信息
         for (let i in this.cities) {
           this.cities[i].forEach((value) => {
             // 如果查询内容与查询输入框相匹配则添加至查询提示信息数组
             if (value.spell.indexOf(this.keyword) > -1 || value.name.indexOf(this.keyword) > -1) {
               // 将该当前城市信息添加到查询提示中
-              result.push(value)
+              this.list.push(value)
             }
           })
         }
-        // 通过查询提示信息数组更新查询提示信息
-        this.list = result
       }, 100)
     }
   },

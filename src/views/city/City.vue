@@ -28,6 +28,9 @@ export default {
       letter: ''
     }
   },
+  mounted () {
+    this.getCityInfo()
+  },
   methods: {
     getCityInfo () {
       this.$axios.get('/api/city.json')
@@ -44,9 +47,6 @@ export default {
     handleLetterChange (letter) {
       this.letter = letter
     }
-  },
-  mounted () {
-    this.getCityInfo()
   }
 }
 </script>
