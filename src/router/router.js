@@ -15,12 +15,10 @@ export default new Router({
   {
     path: '/city',
     name: 'city',
-    component: City
-  },
+    component: City },
   {
     path: '/detail/:id',
     name: 'Detail',
-    component: Detail
-  }
+    component: Detail }
   ]
 })

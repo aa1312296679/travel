@@ -2,7 +2,7 @@
   <div  class="recommend">
     <div class="title">热销推荐</div>
     <ul>
-      <router-link tag="li" class="item border-bottom" v-for="item of recommendList" :key="item.id" :to="`detail/${item.id}`">
+      <router-link tag="li" class="item border-bottom" v-for="item of recommendList" :key="item.id" :to="{name:'Detail',params:{id:item.id}}">
           <img class="item-img" :src="item.imgUrl"/>
         <div class="item-info">
           <p class="item-title">{{item.title}}</p>
