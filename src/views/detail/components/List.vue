@@ -5,7 +5,12 @@
           <span class="item-title-icon"></span>
           {{item.title}}
         </div>
+        <!--
+            定义局部组件的递归出口
+            如果当前元素信息存在子数据则递归创建该局部组件的组件实例
+         -->
         <div v-if="item.children" class="item-chilren">
+          <!--将子数据传递到该组件的递归实例中进行处理-->
           <detail-list :list="item.children"></detail-list>
         </div>
       </div>

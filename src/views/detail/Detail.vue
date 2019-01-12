@@ -1,6 +1,6 @@
 <template>
     <div>
-      <detail-banner :bannerImgs="bannerImg"></detail-banner>
+      <detail-banner :signtName="signtName" :gallaryImgs="gallaryImgs" :bannerImg="bannerImg"></detail-banner>
       <detail-header></detail-header>
       <div class="content">
         <detail-list :list="list"></detail-list>
@@ -21,25 +21,40 @@ export default {
   },
   data () {
     return {
-      bannerImg: ['http://img1.qunarzz.com/sight/p0/1812/4e/4ea37928505e370da3.img.jpg_r_800x800_a8f51919.jpg', 'http://img1.qunarzz.com/sight/p0/1812/eb/eb2b3a1bb0015b53a3.img.jpg_r_800x800_5b46b448.jpg'],
-      list: [
-        { title: '成人票',
-          children: [
-            { title: '成人三馆联票',
-              children: [{
-                title: '成人三馆联票-连锁店1'
-              },
-              {
-                title: '成人三馆联票-连锁店2'
-              }]
-            },
-            { title: '成人五馆联票' }
-          ]
-        },
-        { title: '学生票' },
-        { title: '儿童票' },
-        { title: '特惠票' }
-      ]
+      signtName: '',
+      gallaryImgs: [],
+      list: [],
+      bannerImg: ''
+    }
+  },
+  mounted () {
+    this.getHomeInfo()
+  },
+  methods: {
+    // 请求当前页的数据源
+    getHomeInfo () {
+      // 根据当前详情页的路由参数请求详情信息
+      this.$axios.get('/api/detail.json', {
+        id: this.$route.params.id
+      })
+        .then(this.getHomeInfoSucc)
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    /**
+     * 请求信息解析函数
+     *  @res res为axios请求成功时的resolve
+     */
+    getHomeInfoSucc (res) {
+      res = res.data
+      if (res.ret && res.data) {
+        const data = res.data
+        this.signtName = data.sightName
+        this.gallaryImgs = data.gallaryImgs
+        this.list = data.categoryList
+        this.bannerImg = data.bannerImg
+      }
     }
   }
 }

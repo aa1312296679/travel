@@ -1,15 +1,15 @@
 <template>
     <div class="banner" @click="handleBanerClick">
-      <img class="banner-img" src="http://img1.qunarzz.com/sight/p0/1812/eb/eb2b3a1bb0015b53a3.img.jpg_600x330_fdedc90a.jpg" />
+      <img class="banner-img" :src="bannerImg" />
       <div class="banner-info">
         <div class="banner-tittle">
-          大连圣亚海洋世界（AAA景区）
+          {{signtName}}
         </div>
         <div class="banner-number">
           <span class="iconfont banner-icon">&#xe692;</span>39
         </div>
       </div>
-      <common-gallary :imgs="bannerImgs" v-show="showGallary" @close="handleGallaryClose"></common-gallary>
+      <common-gallary :imgs="gallaryImgs" v-show="showGallary" @close="handleGallaryClose"></common-gallary>
     </div>
 </template>
 
@@ -27,7 +27,9 @@ export default {
     CommonGallary
   },
   props: {
-    bannerImgs: Array
+    gallaryImgs: Array,
+    signtName: String,
+    bannerImg: String
   },
   methods: {
     handleBanerClick () {

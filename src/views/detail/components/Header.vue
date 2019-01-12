@@ -22,10 +22,10 @@ export default {
       }
     }
   },
-  activated () {
+  mounted () {
     window.addEventListener('scroll', this.handleScroll)
   },
-  deactivated () {
+  beforeDestroy () {
     window.removeEventListener('scroll', this.handleScroll)
   },
   methods: {
@@ -35,7 +35,7 @@ export default {
       const top = document.documentElement.scrollTop
       // 如果当前浏览器的滚动条的上边距大于60
       if (top > 60) {
-        // 计算副头部信息的透明度
+        // 计算副头部信息的透明度 140为滚动条的最大滚动范围
         let opacity = top / 140
         opacity = opacity > 1 ? 1 : opacity
         // 更新副头部信息的透明度
