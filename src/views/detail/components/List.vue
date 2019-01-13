@@ -1,19 +1,31 @@
 <template>
     <div>
-      <div class="item" v-for="(item,index) of list" :key="index">
-        <div class="item-title">
-          <span class="item-title-icon"></span>
-          {{item.title}}
+      <!--
+          当前列表组件的列表项信息
+      -->
+      <div class="item-title" @click='toggle'>
+         <!--
+            根据当前列表项的子数据存在情况以不同方式输出该列表项
+          -->
+          <div v-if="isFolder">
+            <span class="item-title-icon"></span>
+            {{list.title}}-更多详情
+          </div>
+          <div v-else>
+            <span class="item-title-icon"> </span>
+            {{list.title}}
+          </div>
         </div>
         <!--
-            定义局部组件的递归出口
-            如果当前元素信息存在子数据则递归创建该局部组件的组件实例
-         -->
-        <div v-if="item.children" class="item-chilren">
-          <!--将子数据传递到该组件的递归实例中进行处理-->
-          <detail-list :list="item.children"></detail-list>
+          列表项的子选项容器
+        -->
+        <div v-show="open" v-if="isFolder" class="item-chilren">
+          <!--
+            1.如果当前列表项存在子数据则遍历列表项下的所有子数据
+            2.递归调用列表项组件处理的子数据
+          -->
+          <detail-list v-for='(item,key) in list.children' :list="item" :key="item.title+key"></detail-list>
         </div>
-      </div>
     </div>
 </template>
 
@@ -21,7 +33,28 @@
 export default {
   name: 'detailList',
   props: {
-    list: Array
+    // 当前列表组件的列表项信息
+    list: Object
+  },
+  data () {
+    return {
+      // 列表项的展开状态
+      open: true
+    }
+  },
+  computed: {
+    // 当前列表项的子数据
+    isFolder () {
+      return this.list.children && this.list.children.length
+    }
+  },
+  methods: {
+    // 更新列表项的展开状态
+    toggle () {
+      if (this.isFolder) {
+        this.open = !this.open
+      }
+    }
   }
 }
 </script>

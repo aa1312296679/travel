@@ -3,7 +3,10 @@
       <detail-banner :signtName="signtName" :gallaryImgs="gallaryImgs" :bannerImg="bannerImg"></detail-banner>
       <detail-header></detail-header>
       <div class="content">
-        <detail-list :list="list"></detail-list>
+        <!--
+            遍历所有列表数据并通过列表项组件创建列表项
+        -->
+        <detail-list :list='item' v-for='(item,key) in list' :key="item.title+key"></detail-list>
       </div>
     </div>
 </template>

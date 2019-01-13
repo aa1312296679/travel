@@ -9,11 +9,14 @@
           <span class="iconfont banner-icon">&#xe692;</span>39
         </div>
       </div>
-      <common-gallary :imgs="gallaryImgs" v-show="showGallary" @close="handleGallaryClose"></common-gallary>
+      <fade-animation>
+        <common-gallary :imgs="gallaryImgs" v-show="showGallary" @close="handleGallaryClose"></common-gallary>
+      </fade-animation>
     </div>
 </template>
 
 <script>
+import FadeAnimation from 'common/fade/fadeAinimation'
 import CommonGallary from 'common/gallary/Gallary'
 export default {
   name: 'Bannaer',
@@ -24,7 +27,8 @@ export default {
     }
   },
   components: {
-    CommonGallary
+    CommonGallary,
+    FadeAnimation
   },
   props: {
     gallaryImgs: Array,
