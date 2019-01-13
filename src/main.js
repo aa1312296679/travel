@@ -10,6 +10,8 @@ import 'styles/border.css'
 // 导入fastclick模块
 // 处理单页应用的元素点击延迟
 import fastClick from 'fastclick'
+// 导入es6转义工具，实现所有浏览器支持ES6
+import 'babel-polyfill'
 import 'styles/iconfont.css'
 // 导入vue版的swiper组件
 import VueAwesomeSwiper from 'vue-awesome-swiper'

@@ -1,7 +1,7 @@
 <template>
   <div class="Alphabet">
     <ul class="list">
-      <li class="item" v-for="item of letters" :ref="item" :key="item" @click="handleLetterClick" @touchstart.prevent="handleTotchStart" @touchmove="handleTotchMove" @touchend="handleTotchEnd">{{item}}</li>
+      <li class="item" v-for="item of letters" :ref="item" :key="item" @click="handleLetterClick" @touchstart="handleTotchStart" @touchmove="handleTotchMove" @touchend="handleTotchEnd">{{item}}</li>
     </ul>
   </div>
 </template>
@@ -41,6 +41,9 @@ export default {
       this.$emit('change', e.target.innerText)
     },
     handleTotchStart (e) {
+      // 阻止屏幕触碰时的默认事件
+      // 默认事件为触发手机屏幕的滚动条
+      e.preventDefault()
       this.touchStart = true
     },
     handleTotchMove (e) {
