@@ -15,7 +15,7 @@ import 'babel-polyfill'
 import 'styles/iconfont.css'
 // 导入vue版的swiper组件
 import VueAwesomeSwiper from 'vue-awesome-swiper'
-import 'swiper/dist/css/swiper.css'
+import 'vue-awesome-swiper/node_modules/swiper/dist/css/swiper.css'
 // 导入better-scroll滚动插件
 import Bscroll from 'better-scroll'
 import Axios from 'axios'

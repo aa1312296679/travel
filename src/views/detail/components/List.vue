@@ -1,9 +1,9 @@
 <template>
-    <div>
+    <ul>
       <!--
           当前列表组件的列表项信息
       -->
-      <div class="item-title" @click='toggle'>
+      <li class="item-title" @click='toggle'>
          <!--
             根据当前列表项的子数据存在情况以不同方式输出该列表项
           -->
@@ -15,35 +15,41 @@
             <span class="item-title-icon"> </span>
             {{list.title}}
           </div>
-        </div>
+        </li>
+      <fadeAnimation>
         <!--
           列表项的子选项容器
         -->
-        <div v-show="open" v-if="isFolder" class="item-chilren">
+        <li v-show="open" v-if="isFolder" class="item-chilren">
           <!--
             1.如果当前列表项存在子数据则遍历列表项下的所有子数据
             2.递归调用列表项组件处理的子数据
           -->
           <detail-list v-for='(item,key) in list.children' :list="item" :key="item.title+key"></detail-list>
-        </div>
-    </div>
+        </li>
+      </fadeAnimation>
+    </ul>
 </template>
 
 <script>
+import fadeAnimation from 'common/fade/fadeAinimation'
 export default {
   name: 'detailList',
+  components: {
+    fadeAnimation
+  },
   props: {
     // 当前列表组件的列表项信息
     list: Object
   },
   data () {
     return {
-      // 列表项的展开状态
+      // 当前列表项的子选项显示状态
       open: true
     }
   },
   computed: {
-    // 当前列表项的子数据
+    // 当前列表项的子数据情况
     isFolder () {
       return this.list.children && this.list.children.length
     }
