@@ -50,10 +50,7 @@ export default {
     letter: String
   },
   mounted () {
-    // 滑动内容挂在到Bscroll滑动插件中
-    // 将滑动对象挂载到当前组件中
-    // 注：scrollY为自定义属性，可任意命名
-    this.scrollY = new this.$Bscroll(this.$refs.wrapper)
+    this.scroll = new this.$Bscroll(this.$refs.wrapper)
   },
   watch: {
     letter () {
@@ -61,7 +58,7 @@ export default {
         // 根据当前组件的字母名获取指定名称的字母元素
         const Element = this.$refs[this.letter][0]
         // 通过btter-scroll插件的scrollToElement方法查找字母元素的位置并将滚动条滑动至该位置
-        this.scrollY.scrollToElement(Element)
+        this.scroll.scrollToElement(Element)
       }
     }
   },

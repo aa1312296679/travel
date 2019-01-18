@@ -14,6 +14,9 @@
       </swiper-slide>
       <!-- 轮播页码容器 -->
       <div class="swiper-pagination"  slot="pagination"></div>
+      <!--轮播切换按钮-->
+      <!--<div class="swiper-button-prev" slot="button-prev"></div>-->
+      <!--<div class="swiper-button-next" slot="button-next"></div>-->
     </swiper>
   </div>
 </template>
@@ -32,6 +35,9 @@ export default {
       swiperOption: {
         // 配置轮播页码
         pagination: '.swiper-pagination',
+        // 轮播切换按配置
+        // prevButton: '.swiper-button-prev',
+        // nextButton: '.swiper-button-next',
         // observer和observeParents用于初始化时自动轮播
         observer: true,
         observeParents: true,
